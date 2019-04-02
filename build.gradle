@@ -10,9 +10,21 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 repositories {
-    maven {
-        // location of the maven that hosts JEI files
-        url = "http://dvs1.progwml6.com/files/maven"
+    maven { // JEI
+        name 'progwml6 maven'
+        url "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven { // CraftTweaker
+        name 'blamejared maven'
+        url "https://maven.blamejared.com/"
+    }
+    maven { // TOP
+        name 'tterrag maven'
+        url "https://maven.tterrag.com/"
+    }
+    maven { // Code Chicken Lib 1.8+
+        name 'chickenbones maven'
+        url "http://chickenbones.net/maven/"
     }
 }
 
@@ -30,7 +42,7 @@ minecraft {
     replaceIn "src/main/java/scoopy/Scoopy.java"
     replace "MOD_VERSION = \"99999.999.999\"", "MOD_VERSION = \"${mod_version}\""
     replace "MC_VERSION = \"\"", "MC_VERSION = \"[${mc_version}]\""
-    replace "DEPENDENCIES = \"\"", "DEPENDENCIES = \"required-after:forge@[${forge_version},);after:nutrition\""
+    replace "DEPENDENCIES = \"\"", "DEPENDENCIES = \"required-after:forge@[${forge_version},);after:nutrition;after:gregtech;after:crafttweaker;\""
 }
 
 dependencies {
@@ -62,7 +74,15 @@ dependencies {
     // at runtime, use the full JEI jar
     runtime "mezz.jei:jei_${mc_version}:${jei_version}"
 
+    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:${mc_version_major_minor}-${crafttweaker_version}"
+
+    deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:${mc_version_major_minor}-${theoneprobe_version}"
+
     compile files("libs/Nutrition-${mc_version}-${nutrition_version}.jar")
+
+    deobfCompile "codechicken:CodeChickenLib:${mc_version}-${codechickenlib_version}:universal"
+
+    compile files("libs/gregtech-${mc_version}-${gregtechce_version}.jar")
 }
 
 processResources {

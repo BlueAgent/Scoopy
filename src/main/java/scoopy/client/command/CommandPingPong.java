@@ -5,7 +5,6 @@ import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraftforge.client.IClientCommand;
 
 public class CommandPingPong extends CommandBase implements IScoopyClientCommand {
     @Override

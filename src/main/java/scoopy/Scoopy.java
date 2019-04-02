@@ -4,13 +4,12 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.*;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import scoopy.common.CommonProxy;
-
-import static ca.wescook.nutrition.Nutrition.proxy;
 
 @Mod(
         modid = Scoopy.MOD_ID,
@@ -29,11 +28,12 @@ public class Scoopy {
     public static final String MC_VERSION = "";
     public static final String DEPENDENCIES = "";
     public static final String DEP_NUTRITION_ID = "nutrition";
+    public static final String DEP_GREGTECH_ID = "gregtech";
     public static final boolean DEV_ENVIRONMENT = MOD_VERSION.equals("99999.999.999");
 
     public static Logger log = LogManager.getLogger(MOD_ID);
 
-    @SidedProxy(clientSide="scoopy.client.ClientProxy", serverSide="scoopy.common.CommonProxy")
+    @SidedProxy(clientSide = "scoopy.client.ClientProxy", serverSide = "scoopy.common.CommonProxy")
     public static CommonProxy proxy = null;
 
     @Instance(MOD_ID)
