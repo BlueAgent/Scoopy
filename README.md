@@ -1,1 +1,1 @@
-Need to download nutrition mod and put in libs folder
+Need to download nutrition and gregtechce mods and put in libs folder

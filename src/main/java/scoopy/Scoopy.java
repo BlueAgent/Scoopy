@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import scoopy.common.CommonProxy;
@@ -57,5 +58,11 @@ public class Scoopy {
     public void postInit(FMLPostInitializationEvent event) {
         System.out.println(String.format("Post-Init %s", MOD_ID));
         proxy.postInit(event);
+    }
+
+    @EventHandler
+    public void serverStarting(FMLServerStartingEvent event) {
+        System.out.println(String.format("Server Starting %s", MOD_ID));
+        proxy.serverStarting(event);
     }
 }

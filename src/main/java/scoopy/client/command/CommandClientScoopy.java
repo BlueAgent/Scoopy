@@ -4,6 +4,8 @@ import net.minecraft.command.ICommandSender;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.server.command.CommandTreeBase;
 import net.minecraftforge.server.command.CommandTreeHelp;
+import scoopy.Scoopy;
+import scoopy.common.command.CommandEventHandlers;
 
 import static scoopy.Scoopy.DEP_GREGTECH_ID;
 import static scoopy.Scoopy.DEP_NUTRITION_ID;
@@ -12,10 +14,15 @@ public class CommandClientScoopy extends CommandTreeBase implements IScoopyClien
 
     public CommandClientScoopy() {
         addSubcommand(new CommandPingPong());
-        if (Loader.isModLoaded(DEP_NUTRITION_ID))
+        if (Loader.isModLoaded(DEP_NUTRITION_ID)) {
+            Scoopy.log.info("Client Nutrition Commands Loaded");
             addSubcommand(new CommandTreeNutrition());
-        if (Loader.isModLoaded(DEP_GREGTECH_ID))
+        }
+        if (Loader.isModLoaded(DEP_GREGTECH_ID)) {
+            Scoopy.log.info("Client Gregtech Commands Loaded");
             addSubcommand(new CommandTreeGregtech());
+        }
+        addSubcommand(new CommandEventHandlers());
         addSubcommand(new CommandTreeHelp(this));
     }
 
