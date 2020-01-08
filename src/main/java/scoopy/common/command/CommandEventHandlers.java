@@ -49,7 +49,7 @@ public class CommandEventHandlers extends CommandBase implements IScoopyClientCo
 
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
-        if (args.length != 1) throw new WrongUsageException("Missing class param");
+        if (args.length != 1) throw new WrongUsageException(getUsage(sender));
 
         final Event event;
         try {
@@ -75,12 +75,12 @@ public class CommandEventHandlers extends CommandBase implements IScoopyClientCo
                         .map(listener -> busRef.name + ": " + listener)
         ).collect(Collectors.toList());
         String result = Stream.concat(
-                Stream.of(listenerDescriptions.size() + " Event Listeners for " + args[0] + ":"),
+                Stream.of("Found " + listenerDescriptions.size() + " Event Listeners for " + args[0] + ":"),
                 listenerDescriptions.stream()
         ).collect(Collectors.joining("\n"));
         Scoopy.log.info(result);
         sender.sendMessage(new TextComponentString(
-                "Found " + listenerDescriptions.size() + "listeners. Event information dumped to logs."));
+                "Found " + listenerDescriptions.size() + " Event Listeners. Event information dumped to logs."));
     }
 
     private static final class EventBusRef {
