@@ -7,6 +7,7 @@ import net.minecraftforge.server.command.CommandTreeHelp;
 public class CommandScoopy extends CommandTreeBase {
 
     public CommandScoopy() {
+        addSubcommand(new CommandDataParameters());
         addSubcommand(new CommandEventHandlers());
         addSubcommand(new CommandTreeHelp(this));
     }
