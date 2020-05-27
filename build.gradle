@@ -42,7 +42,7 @@ minecraft {
     replaceIn "src/main/java/scoopy/Scoopy.java"
     replace "MOD_VERSION = \"99999.999.999\"", "MOD_VERSION = \"${mod_version}\""
     replace "MC_VERSION = \"\"", "MC_VERSION = \"[${mc_version}]\""
-    replace "DEPENDENCIES = \"\"", "DEPENDENCIES = \"required-after:forge@[${forge_version},);after:nutrition;after:gregtech;after:crafttweaker;\""
+    replace "DEPENDENCIES = \"\"", "DEPENDENCIES = \"required-after:forge@[${forge_version_dep},);after:nutrition;after:gregtech;after:crafttweaker;\""
 }
 
 dependencies {
