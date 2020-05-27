@@ -137,13 +137,11 @@ public class CommandDataParameters extends CommandBase implements IScoopyClientC
                                 return mcB ? 1 : nameA.compareTo(nameB);
                             }
                         })
-                        .forEachOrdered(child -> {
-                            stack.add(new Element(
-                                    child,
-                                    depth + 1,
-                                    maxId
-                            ));
-                        });
+                        .forEachOrdered(child -> stack.add(new Element(
+                                child,
+                                depth + 1,
+                                maxId
+                        )));
             }
         }
 
